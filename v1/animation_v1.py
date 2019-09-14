@@ -36,6 +36,18 @@ colorkey = '/Users/hyperionskies/Desktop/BlenderProject/colorkey.txt'
 yearjump = 25
 
 
+#--- Model file 
+
+# Should point to Trees.blend, unless another model is desired;
+# if not using Trees.blend, change 'section' and 'obj' in Model data.
+# see manual for more info.
+
+# mac directory path sample
+blendfile = '/Users/hyperionskies/Desktop/BlenderProject/Trees.blend'
+# windows directory path sample
+# blendfile = 'C:/Users/zc600012/Desktop/Cohort_Database/Trees.blend'
+
+
 #--- Keyframing
 
 # NOTE: Script does not affect Blender's fps; default is 24.
@@ -47,21 +59,22 @@ still = 24
 keyincr = 72
 
 
+#--- Coordinates
+
+# coordinates will be between -(maxcoord-1) and maxcoord
+maxcoord = 50
+# cscale automatically adjusts sizes of model and coordinate "squares"
+cscale = maxcoord/50
+
 #--- Scaling
 
 # Tree scaling
-scale = (0.0254)*(16/28.3)*0.3
+scale = (0.0254)*(16/28.3)*0.3*cscale
 # Additional scaling for specific tree model
 xmod = 12
 #--- xmod used for radius value instead of separate x/y values
 #--- z scale modifier (full precision: 0.310608)
 zmod = 0.311
-
-
-#--- Coordinates
-
-# coordinates will be between -(maxcoord-1) and maxcoord
-maxcoord = 50
 
 
 #--- Camera/Text orbit
@@ -90,12 +103,7 @@ skycolor = (0.315,0.390,0.477)
 
 #--- Model data
 
-# tree append setup; change blendfile to path for Trees.blend if moved
 # section and obj should not need to be changed unless dealing with a different .blend
-# mac directory path sample
-blendfile = '/Users/hyperionskies/Desktop/BlenderProject/Trees.blend'
-# windows directory path sample
-# blendfile = 'C:/Users/zc600012/Desktop/Cohort_Database/Trees.blend'
 section = '\\Object\\'
 obj = 'tree'
 
@@ -161,9 +169,9 @@ def make_Coord(X,Y):
 # to fit roughly within 15-16 units (all models will fit in default camera radius)
 coords = []
 for i in range((-1*maxcoord+1),maxcoord):
-	fl_i = i/3.25
+	fl_i = i/(3.25*cscale)
 	for j in range((-1*maxcoord+1),maxcoord):
-		fl_j = j/3.25
+		fl_j = j/(3.25*cscale)
 		coords.append(make_Coord(fl_i,fl_j))
 
 

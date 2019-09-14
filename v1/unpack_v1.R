@@ -10,8 +10,8 @@ output <- paste(path,"/matrix_file_nr.txt",sep="")
 
 # set up database access/library calls/driver
 database <- paste(path,"/db_cohorts.db",sep="")
-library("DBI")
-library("RSQLite")
+if (!require("DBI")) install.packages("DBI")
+if (!require("RSQLite")) install.packages("RSQLite")
 driver <- dbDriver("SQLite",max.con = 25)
 con <- dbConnect(driver, dbname=database)
 
