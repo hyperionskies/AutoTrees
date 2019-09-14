@@ -1,2 +1,7 @@
 # AutoTrees
-Automated animation of forest statistical models over time using Blender 3D animation
+Automated animation of forest statistical models over time using Blender 3D animation.
+
+# Version Differences
+Version 1 contains only a database unpack (unpack_v1.R) and Blender script (animation_v1.py), and requires that both be manually run. The Blender script can be run in Blender at start up via command line, but does not close out Blender when complete. Version 1 also requires that certain variables be set before running either script, but especially the Blender script's variables related to the dataset size. As of the most recent update to version 1, the only automatically calculated variable is cscale, which scales the models and grid based off the number of grid coordinates to help keep everything in frame. Preparation needed before running the version 1 scripts is included in the v1 User Manual. It is highly recommended that the final video file is converted to MP4 (or another video format smaller than AVI) both to save space and ensure that the video can be viewed; the AVIs output by the Blender script can become large very quickly. HandBrake is recommended: https://github.com/HandBrake/HandBrake.
+
+Version 2 also contains a driver script (AutoTrees_v2.py). The driver prompts the user to enter the location of the database file to run the program on, and makes calls to command line and attempts to run both scripts before converting the output into an MP4. As such, animation_v2.py is highly automated and calculates all necessary values from the text file unpack_v2.R outputs; the output location cannot be changed during runtime, however. The User Manual lists all script requirements. Version 2 has been released in a Windows and a Mac version.
